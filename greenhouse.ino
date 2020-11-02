@@ -1,5 +1,7 @@
 #include <DHT.h>
+
 #define Type DHT11
+
 int sensePin=2;
 int setTime=500;
 int dt=1000;
@@ -47,7 +49,7 @@ void loop()
 
   if (humidity < 93 && humidifierRunning == false) // Humidifier threshold
   {
-    (digitalWrite(hum, HIGH)); // Press humidifier button through relay
+    digitalWrite(hum, HIGH); // Press humidifier button through relay
     delay(1000);
     digitalWrite(hum, LOW);   // Release humidifier button through relay
     digitalWrite(blue, HIGH); // Turn on Blue humidifier LED
@@ -55,7 +57,7 @@ void loop()
   }
   else if (humidity > 93 && humidifierRunning == true)
   {
-    (digitalWrite(hum, HIGH)); // Press humidifier button through relay
+    digitalWrite(hum, HIGH); // Press humidifier button through relay
     delay(1000);
     digitalWrite(hum, LOW);   // Release humidifier button through relay
     digitalWrite(blue, LOW); // Turn off Humidifier LED
