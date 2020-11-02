@@ -3,9 +3,9 @@
 int sensePin=2;
 int setTime=500;
 int dt=1000;
-int red = 8;
-int blue = 9;
-int hum = 10;
+int red = 8; // red Temperature LED
+int blue = 9; // Blue Humidity LED
+int hum = 10; // Humidifier
 int running;
 
 
@@ -39,20 +39,20 @@ void loop() {
   Serial.println (" C ");
   delay(dt);
 
-if ((tempC) < 20.5)
-{digitalWrite(red, HIGH);}
+if ((tempC) < 20.5) // Threshold for fan
+{digitalWrite(red, HIGH);} // Turn on Red Tempurature LED, Fan command to be added later.
 else 
   {digitalWrite(red, LOW);
 }
 
-if ((humidity) < 93) && running == false;
-{(digitalWrite(hum, HIGH));
+if ((humidity) < 93) && running == false; // Humidifier threshold
+{(digitalWrite(hum, HIGH)); // Press humidifier button through relay
 delay(1000);
-digitalWrite(hum, LOW);
-digitalWrite(blue,HIGH);
+digitalWrite(hum, LOW); // Release humidifier button through relay
+digitalWrite(blue,HIGH); // Turn on Blue humidifier LED
 running == true;
 else
-digitalWrite(blue,LOW);
+digitalWrite(blue,LOW); // Turn off Humidifier LED
 
   
 }
@@ -62,5 +62,3 @@ digitalWrite(blue,LOW);
   
   
 
-  
-  // put your main code here, to run repeatedly:
