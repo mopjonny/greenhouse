@@ -57,9 +57,13 @@ void loop()
   }
   else if (humidity > 93 && humidifierRunning == true)
   {
-    digitalWrite(hum, HIGH); // Press humidifier button through relay
+    digitalWrite(hum, HIGH); // Press humidifier button through relay (Pressing 2x to turn off humidifier)
     delay(1000);
     digitalWrite(hum, LOW);   // Release humidifier button through relay
+    delay(1000);
+    digitalWrite(hum, HIGH);
+    delay(1000);
+    digitalWrite(hum, LOW); 
     digitalWrite(blue, LOW); // Turn off Humidifier LED
     humidifierRunning == false;
   }
